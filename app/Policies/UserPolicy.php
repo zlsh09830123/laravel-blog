@@ -23,4 +23,9 @@ class UserPolicy
     {
         return $currentUser->id === $user->id;
     }
+
+    public function destroy(User $currentUser, User $user)
+    {
+        return $currentUser->is_admin && $currentUser->id !== $user->id; // 只有當前登入用戶為管理員且刪除的用戶對象不能為自己才能執行刪除動作
+    }
 }
