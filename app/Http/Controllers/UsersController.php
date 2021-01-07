@@ -20,6 +20,9 @@ class UsersController extends Controller
             'only' => ['create']
         ]);
 
+        $this->middleware('throttle:10,60', [
+            'only' => ['store']
+        ]);
     }
 
     public function index()
