@@ -15,11 +15,11 @@
 
           <div class="form-group">
             <label for="email">信箱：</label>
-            <input type="text" name="email" class="form-control" value="{{ old('email') }}">
+            <input type="email" name="email" class="form-control" value="{{ old('email') }}">
           </div>
 
           <div class="form-group">
-            <label for="password">密碼：</label>
+            <label for="password">密碼（<a href="{{ route('password.request') }}">忘記密碼</a>）：</label>
             <input type="password" name="password" class="form-control" value="{{ old('password') }}">
           </div>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,9 @@ Route::post('login', [SessionsController::class, 'store'])->name('login');
 Route::delete('logout', [SessionsController::class, 'destroy'])->name('logout');
 
 Route::get('signup/confirm/{token}', [UsersController::class, 'confirmEmail'])->name('confirm_email');
+
+Route::get('password/reset', [PasswordController::class, 'showLinkRequestForm'])->name('password.request'); // 填寫 Email 的表單
+Route::post('password/email', [PasswordController::class, 'sendResetLinkEmail'])->name('password.email');    // 處理表單提交，成功的話就寄送信件，附帶 Token 的鏈結
+
+Route::get('password/reset/{token}', [PasswordController::class, 'showResetForm'])->name('password.reset'); // 顯示更新密碼的表單，包含 Token
+Route::post('password/reset', [PasswordController::class, 'reset'])->name('password.update');               // 對提交過來的 Token 和 Email 資料進行配對，正確的話更新密碼
