@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticPagesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\StatusesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,5 @@ Route::post('password/email', [PasswordController::class, 'sendResetLinkEmail'])
 
 Route::get('password/reset/{token}', [PasswordController::class, 'showResetForm'])->name('password.reset'); // 顯示更新密碼的表單，包含 Token
 Route::post('password/reset', [PasswordController::class, 'reset'])->name('password.update');               // 對提交過來的 Token 和 Email 資料進行配對，正確的話更新密碼
+
+Route::resource('statuses', StatusesController::class, ['only' => ['store', 'destroy']]);
