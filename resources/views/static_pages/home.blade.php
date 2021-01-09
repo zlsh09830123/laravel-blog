@@ -7,6 +7,9 @@
         <section class="status_form">
           @include('shared._status_form')
         </section>
+        <h4>Blog 列表</h4>
+        <hr>
+        @include('shared._feed')
       </div>
       <aside class="col-md-4">
         <section class="user_info">
@@ -18,7 +21,7 @@
     <div class="jumbotron">
       <h1>Hello Laravel</h1>
       <p class="lead">
-        主頁
+        Blog 主頁
       </p>
       <p>
         一切。將從這裡開始
